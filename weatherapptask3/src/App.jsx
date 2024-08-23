@@ -7,6 +7,7 @@ import Forecast from "./components/Forecast";
 import getAdvancedWeatherData from "./apis/Weatherapi";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { WiDaySunny } from "react-icons/wi"; 
 
 // Color mappings for different weather conditions
 const weatherColors = {
@@ -81,6 +82,12 @@ export default function App() {
     <div
       className={`mx-auto max-w-screen-md md:my-4 py-5 px-6 md:px-20 lg:px-32 ${backgroundColor} h-fit shadow-xl shadow-gray-400`}
     >
+      <div className="flex  items-center justify-between mb-6">
+        <WiDaySunny className="w-14 h-14 text-orange-500" />
+        <h1 className="text-4xl text-slate-200 font-bold mb-2">SkyScout</h1>
+        <WiDaySunny className="w-14 h-14 text-orange-500" />
+      </div>
+      <hr />
       <ButtonsatTop setQuery={setQuery} setUnit={setUnit} />
       <Input setQuery={setQuery} setUnit={setUnit} />
       {weather && (
@@ -91,7 +98,7 @@ export default function App() {
           <Forecast title="Daily forecast" items={weather.daily} />
         </>
       )}
-      <ToastContainer autoClose={2500} hideProgressBar={true} theme="colored"/>
+      <ToastContainer autoClose={2500} hideProgressBar={true} theme="colored" />
     </div>
   );
 }
