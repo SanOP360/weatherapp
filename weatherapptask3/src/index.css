@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+body {
+  background-image: url('https://images.hdqwalls.com/wallpapers/clouds-summer-weather-5k-1b.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; 
+}
