@@ -17,6 +17,8 @@ const weatherColors = {
   drizzle: "bg-gradient-to-br from-blue-500 to-blue-700",
   snow: "bg-gradient-to-br from-blue-600 to-sky-200",
   rain: "bg-gradient-to-br from-gray-500 to-gray-800",
+  haze: "bg-gradient-to-br from-sky-300 to-gray-400",
+  mist: "bg-gradient-to-br from-gray-500 to-teal-800",
 };
 
 export default function App() {
@@ -80,7 +82,7 @@ export default function App() {
 
   return (
     <div
-      className={`mx-auto max-w-screen-md md:my-4 py-5 px-6 md:px-20 lg:px-32 ${backgroundColor} h-fit shadow-xl shadow-gray-400`}
+      className={`mx-auto max-w-screen-md md:my-4 py-5 px-4 md:px-20 lg:px-32 ${backgroundColor} h-fit shadow-xl shadow-gray-400`}
     >
       <div className="flex  items-center justify-between mb-6">
         <WiDaySunny className="w-14 h-14 text-orange-500" />
