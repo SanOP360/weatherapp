@@ -42,7 +42,7 @@ function Input({ setQuery, setUnit }) {
           type="text"
           value={city}
           onChange={(e) => setCity(e.target.value)}
-          onKeyPress={(e) => e.key === "Enter" && handleSearch()}
+          onKeyUp={(e) => e.key === "Enter" && handleSearch()}
           className="md:text-xl font-light p-2 px-5 w-full shadow-xl focus:outline-none capitalize placeholder:lowercase rounded-full text-gray-600"
           placeholder="Search for city..."
         />
