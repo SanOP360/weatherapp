@@ -5,11 +5,12 @@ const API_KEY = "9de46e2843ddf44a0d44b201f843a2e0";
 const base_URL = "https://api.openweathermap.org/data/2.5";
 
 // Function to fetch weather data based on type and parameters
-const getWeathData = (infoType, searchParams) => {
+const getWeathData = async (infoType, searchParams) => {
   const url = new URL(base_URL + "/" + infoType);
   url.search = new URLSearchParams({ ...searchParams, appid: API_KEY });
 
-  return axios.get(url.toString()).then((res) => res.data);
+  const response = await axios.get(url.toString());
+  return response.data;
 };
 
 // Function to format current weather data
@@ -72,22 +73,27 @@ const formatForecastWeather = (secs, offset, data) => {
   return { hourly, daily };
 };
 
+
 // Function to fetch and format advanced weather data
 const getAdvancedWeatherData = async (searchParams) => {
-  const advancedCurrentWeather = await getWeathData(
-    "weather",
-    searchParams
-  ).then(currentWeather);
+  const advancedCurrentWeather = await getWeathData("weather", searchParams);
+  const formattedCurrentWeather = currentWeather(advancedCurrentWeather);
 
-  const { dt, lat, lon, timezone } = advancedCurrentWeather;
+  const { dt, lat, lon, timezone } = formattedCurrentWeather;
 
-  const ForecastWeather = await getWeathData("forecast", {
+  const forecastData = await getWeathData("forecast", {
     lat,
     lon,
     units: searchParams.units,
-  }).then((d) => formatForecastWeather(dt, timezone, d.list));
+  });
 
-  return { ...advancedCurrentWeather, ...ForecastWeather };
+  const formattedForecastWeather = formatForecastWeather(
+    dt,
+    timezone,
+    forecastData.list
+  );
+
+  return { ...formattedCurrentWeather, ...formattedForecastWeather };
 };
 
 // Function to format time into a local time string
