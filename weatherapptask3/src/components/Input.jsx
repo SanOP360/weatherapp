@@ -62,8 +62,8 @@ function Input({ setQuery, setUnit }) {
         <button
           className={`md:text-xl text-sm px-2 py-2 rounded-lg transition ease-out  ${
             selectedUnit === "metric"
-              ? "bg-transparent border border-white text-white shadow-lg  "
-              : "bg-gray-600 text-white p-4 text-lg font-bold border border-white"
+              ? " bg-gray-300 text-slate-500  shadow-lg border  "
+              : "bg-transparent text-white p-4 text-lg font-bold border border-white"
           }`}
           onClick={() => handleUnitChange("metric")}
         >
@@ -73,8 +73,8 @@ function Input({ setQuery, setUnit }) {
         <button
           className={`md:text-xl text-sm px-2 py-2 rounded-lg transition ease-out ${
             selectedUnit === "imperial"
-              ? "bg-transparent text-white  shadow-lg border border-white "
-              : "bg-gray-600 text-white p-4 text-lg font-bold border border-white"
+              ? " bg-gray-300 text-slate-500  shadow-lg border  "
+              : "bg-transparent text-white p-4 text-lg font-bold border border-white"
           }`}
           onClick={() => handleUnitChange("imperial")}
         >
